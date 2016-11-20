@@ -25,12 +25,12 @@ SECTION-ALLOCATION SECTION
 Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
 .stack                           256   R/W     0x1000     0x10FF   RAM
-Name_LCD_Main.asm__ORG00001        175     R     0x4000     0x40AE   .absSeg0
-Name_LCD_Module.asm._SEC000000         36     R   0x308000   0x308023   PAGE_30
+Name_LCD_Main.asm__ORG00001        154     R     0x4000     0x4099   .absSeg0
+Name_LCD_Module.asm._SEC000000        113     R   0x308000   0x308070   PAGE_30
 .vectSeg1_vect                     2     R     0xFFFE     0xFFFF   .vectSeg1
 
 Summary of section sizes per section type:
-READ_ONLY (R):          D5 (dec:      213)
+READ_ONLY (R):         10D (dec:      269)
 READ_WRITE (R/W):      100 (dec:      256)
 
 *********************************************************************************************
@@ -45,25 +45,29 @@ OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 MODULE:                 -- Name_LCD_Main.asm.o --
 - PROCEDURES:
-     Entry                                     4000      57      87       0   .init       
-     AGAIN                                     4057       2       2       0   .init       
-     COMWRT4                                   4059      2B      43       0   .init       
-     DATWRT4                                   4084      2B      43       0   .init       
+     Entry                                     4000      42      66       0   .init       
+     AGAIN                                     4042       2       2       0   .init       
+     COMWRT4                                   4044      2B      43       0   .init       
+     DATWRT4                                   406F      2B      43       5   .init       
 - VARIABLES:
 MODULE:                 -- Name_LCD_Module.asm.o --
 - PROCEDURES:
-     DELAY                                   308000       6       6      10   Name_LCD_Module.asm._SEC000000
+     DELAY                                   308000       6       6      12   Name_LCD_Module.asm._SEC000000
      L3                                      308006       5       5       0   Name_LCD_Module.asm._SEC000000
      L2                                      30800B       5       5       0   Name_LCD_Module.asm._SEC000000
-     L1                                      308010      14      20       0   Name_LCD_Module.asm._SEC000000
+     L1                                      308010      1A      26       0   Name_LCD_Module.asm._SEC000000
+     LL3                                     30802A       5       5       0   Name_LCD_Module.asm._SEC000000
+     LL2                                     30802F       5       5       0   Name_LCD_Module.asm._SEC000000
+     LL1                                     308034      14      20       0   Name_LCD_Module.asm._SEC000000
+     DISPLAY                                 308048      29      41       1   Name_LCD_Module.asm._SEC000000
 - VARIABLES:
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
-  Name_LCD_Main.asm.o                          0    175      0
-  Name_LCD_Module.asm.o                        0     36      0
+  Name_LCD_Main.asm.o                          0    154      0
+  Name_LCD_Module.asm.o                        0    113      0
   other                                      256      2      0
 
 *********************************************************************************************
@@ -72,20 +76,24 @@ SECTION USE IN OBJECT-ALLOCATION SECTION
 SECTION: ".init"
   Entry AGAIN COMWRT4 DATWRT4 
 SECTION: "Name_LCD_Module.asm._SEC000000"
-  DELAY L3 L2 L1 
+  DELAY L3 L2 L1 LL3 LL2 LL1 DISPLAY 
 
 *********************************************************************************************
 OBJECT LIST SORTED BY ADDRESS
      Name                                      Addr   hSize   dSize     Ref    Section   RLIB
 ---------------------------------------------------------------------------------------------
-     Entry                                     4000      57      87       0   .init       
-     AGAIN                                     4057       2       2       0   .init       
-     COMWRT4                                   4059      2B      43       0   .init       
-     DATWRT4                                   4084      2B      43       0   .init       
-     DELAY                                   308000       6       6      10   Name_LCD_Module.asm._SEC000000
+     Entry                                     4000      42      66       0   .init       
+     AGAIN                                     4042       2       2       0   .init       
+     COMWRT4                                   4044      2B      43       0   .init       
+     DATWRT4                                   406F      2B      43       5   .init       
+     DELAY                                   308000       6       6      12   Name_LCD_Module.asm._SEC000000
      L3                                      308006       5       5       0   Name_LCD_Module.asm._SEC000000
      L2                                      30800B       5       5       0   Name_LCD_Module.asm._SEC000000
-     L1                                      308010      14      20       0   Name_LCD_Module.asm._SEC000000
+     L1                                      308010      1A      26       0   Name_LCD_Module.asm._SEC000000
+     LL3                                     30802A       5       5       0   Name_LCD_Module.asm._SEC000000
+     LL2                                     30802F       5       5       0   Name_LCD_Module.asm._SEC000000
+     LL1                                     308034      14      20       0   Name_LCD_Module.asm._SEC000000
+     DISPLAY                                 308048      29      41       1   Name_LCD_Module.asm._SEC000000
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -98,6 +106,7 @@ COPYDOWN SECTION
 *********************************************************************************************
 OBJECT-DEPENDENCIES SECTION
 ---------------------------------------------------------------------------------------------
+DISPLAY                   USES DATWRT4 DELAY 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -109,5 +118,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 3
-Total size of all blocks to be downloaded: 213
+Total size of all blocks to be downloaded: 269
 

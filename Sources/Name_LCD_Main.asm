@@ -5,6 +5,8 @@
 		  
 		  ABSENTRY Entry		  
 		  XREF DELAY
+		  XREF DISPLAY
+		  XDEF DATWRT4 
  
 	
 LCD_DATA	EQU PORTK		
@@ -21,6 +23,7 @@ TEMP    EQU     $1200
 Entry:
 	    LDS   #$4000    ;Stack
       
+      ;init LCD
   		LDAA  #$FF
 		  STAA  DDRK		
 		  LDAA  #$33
@@ -44,15 +47,8 @@ Entry:
 		  LDAA	#$80     	
 		  JSR	  COMWRT4    	
 		  JSR   DELAY
-		  LDAA	#'Y'     	
-		  JSR	  DATWRT4    	
-		  JSR   DELAY
-		  LDAA  #'E'     	
-		  JSR	  DATWRT4 
-		  JSR   DELAY
-		  LDAA  #'S'     	
-		  JSR	  DATWRT4 
-		  JSR   DELAY
+		  
+		  JSR   DISPLAY
 		   	
 AGAIN: BRA	AGAIN      	
 ;----------------------------
