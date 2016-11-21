@@ -1,16 +1,19 @@
 ;Author: Bill Wang
 ;Date: 11/20/2016/
 ;Module file
-
+        INCLUDE 'mc9s12dp256.inc'
+        
         XDEF DELAY
         XDEF DISPLAY
         XREF DATWRT4
+        XREF COMWRT4
         
 R1      EQU     $1001
 R2      EQU     $1002
 R3      EQU     $1003
+R4      EQU     $1004
 
-NAME DC.B "HU WANG BILL",0
+NAME DC.B " HU WANG BILL    ",0
 
 DELAY:
         PSHA		;Save Reg A on Stack
@@ -63,17 +66,44 @@ LL1      NOP         ;1 Intruction Clk Cycle
         RTS
 ;-------------------
 
-DISPLAY:
 
-        LDX   #NAME
-LOOP    LDAA	0,X
-        BEQ   OVER  	
+DISPLAY:
+        LDX   #NAME   ;init
+        LDAB  #1
+                
+LOOP    LDAA	B,X
+        BEQ   REMAIN  	
   		  JSR	  DATWRT4    	
   		  JSR   DELAY
   		  INX
   		  BRA   LOOP
-  		  
-OVER	  RTS
 
+;display remaining string  		  
+REMAIN  DECB
+        BNE   OVER       ;b!=0,jump        
+        LDAB  #16 ;reset B
+
+OVER    
+;---------------------------  		  
+  		  STAB  R4
+  		  LDX   #NAME
+LOOP2   LDAA	0,X
+        JSR	  DATWRT4    	
+  		  JSR   DELAY
+  		  INX
+  		  DEC   R4
+        BNE   LOOP2
+;---------------------------
+
+        ;clear lcd
+  		  LDAA	#$80     	
+  		  JSR	  COMWRT4    	
+  		  JSR   DELAY
+  		  
+        LDX   #NAME
+        JSR   DELAY75
+        BRA   LOOP     
+
+        RTS
         END
 

@@ -26,11 +26,11 @@ Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
 .stack                           256   R/W     0x1000     0x10FF   RAM
 Name_LCD_Main.asm__ORG00001        154     R     0x4000     0x4099   .absSeg0
-Name_LCD_Module.asm._SEC000000        102     R   0x308000   0x308065   PAGE_30
+Name_LCD_Module.asm._SEC000000        150     R   0x308000   0x308095   PAGE_30
 .vectSeg1_vect                     2     R     0xFFFE     0xFFFF   .vectSeg1
 
 Summary of section sizes per section type:
-READ_ONLY (R):         102 (dec:      258)
+READ_ONLY (R):         132 (dec:      306)
 READ_WRITE (R/W):      100 (dec:      256)
 
 *********************************************************************************************
@@ -47,22 +47,25 @@ MODULE:                 -- Name_LCD_Main.asm.o --
 - PROCEDURES:
      Entry                                     4000      42      66       0   .init       
      AGAIN                                     4042       2       2       0   .init       
-     COMWRT4                                   4044      2B      43       0   .init       
-     DATWRT4                                   406F      2B      43       1   .init       
+     COMWRT4                                   4044      2B      43       1   .init       
+     DATWRT4                                   406F      2B      43       2   .init       
 - VARIABLES:
 MODULE:                 -- Name_LCD_Module.asm.o --
 - PROCEDURES:
-     NAME                                    308000       D      13       1   Name_LCD_Module.asm._SEC000000
-     DELAY                                   30800D       6       6       8   Name_LCD_Module.asm._SEC000000
-     L3                                      308013       5       5       0   Name_LCD_Module.asm._SEC000000
-     L2                                      308018       5       5       0   Name_LCD_Module.asm._SEC000000
-     L1                                      30801D      1A      26       0   Name_LCD_Module.asm._SEC000000
-     LL3                                     308037       5       5       0   Name_LCD_Module.asm._SEC000000
-     LL2                                     30803C       5       5       0   Name_LCD_Module.asm._SEC000000
-     LL1                                     308041      14      20       0   Name_LCD_Module.asm._SEC000000
-     DISPLAY                                 308055       3       3       1   Name_LCD_Module.asm._SEC000000
-     LOOP                                    308058       D      13       0   Name_LCD_Module.asm._SEC000000
-     OVER                                    308065       1       1       0   Name_LCD_Module.asm._SEC000000
+     NAME                                    308000      12      18       3   Name_LCD_Module.asm._SEC000000
+     DELAY                                   308012       6       6      10   Name_LCD_Module.asm._SEC000000
+     L3                                      308018       5       5       0   Name_LCD_Module.asm._SEC000000
+     L2                                      30801D       5       5       0   Name_LCD_Module.asm._SEC000000
+     L1                                      308022      14      20       0   Name_LCD_Module.asm._SEC000000
+     DELAY75                                 308036       6       6       1   Name_LCD_Module.asm._SEC000000
+     LL3                                     30803C       5       5       0   Name_LCD_Module.asm._SEC000000
+     LL2                                     308041       5       5       0   Name_LCD_Module.asm._SEC000000
+     LL1                                     308046      14      20       0   Name_LCD_Module.asm._SEC000000
+     DISPLAY                                 30805A       5       5       1   Name_LCD_Module.asm._SEC000000
+     LOOP                                    30805F       D      13       0   Name_LCD_Module.asm._SEC000000
+     REMAIN                                  30806C       5       5       0   Name_LCD_Module.asm._SEC000000
+     OVER                                    308071       6       6       0   Name_LCD_Module.asm._SEC000000
+     LOOP2                                   308077      1F      31       0   Name_LCD_Module.asm._SEC000000
 - VARIABLES:
 
 *********************************************************************************************
@@ -70,7 +73,7 @@ MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   Name_LCD_Main.asm.o                          0    154      0
-  Name_LCD_Module.asm.o                        0    102      0
+  Name_LCD_Module.asm.o                        0    150      0
   other                                      256      2      0
 
 *********************************************************************************************
@@ -79,7 +82,7 @@ SECTION USE IN OBJECT-ALLOCATION SECTION
 SECTION: ".init"
   Entry AGAIN COMWRT4 DATWRT4 
 SECTION: "Name_LCD_Module.asm._SEC000000"
-  NAME DELAY L3 L2 L1 LL3 LL2 LL1 DISPLAY LOOP OVER 
+  NAME DELAY L3 L2 L1 DELAY75 LL3 LL2 LL1 DISPLAY LOOP REMAIN OVER LOOP2 
 
 *********************************************************************************************
 OBJECT LIST SORTED BY ADDRESS
@@ -87,19 +90,22 @@ OBJECT LIST SORTED BY ADDRESS
 ---------------------------------------------------------------------------------------------
      Entry                                     4000      42      66       0   .init       
      AGAIN                                     4042       2       2       0   .init       
-     COMWRT4                                   4044      2B      43       0   .init       
-     DATWRT4                                   406F      2B      43       1   .init       
-     NAME                                    308000       D      13       1   Name_LCD_Module.asm._SEC000000
-     DELAY                                   30800D       6       6       8   Name_LCD_Module.asm._SEC000000
-     L3                                      308013       5       5       0   Name_LCD_Module.asm._SEC000000
-     L2                                      308018       5       5       0   Name_LCD_Module.asm._SEC000000
-     L1                                      30801D      1A      26       0   Name_LCD_Module.asm._SEC000000
-     LL3                                     308037       5       5       0   Name_LCD_Module.asm._SEC000000
-     LL2                                     30803C       5       5       0   Name_LCD_Module.asm._SEC000000
-     LL1                                     308041      14      20       0   Name_LCD_Module.asm._SEC000000
-     DISPLAY                                 308055       3       3       1   Name_LCD_Module.asm._SEC000000
-     LOOP                                    308058       D      13       0   Name_LCD_Module.asm._SEC000000
-     OVER                                    308065       1       1       0   Name_LCD_Module.asm._SEC000000
+     COMWRT4                                   4044      2B      43       1   .init       
+     DATWRT4                                   406F      2B      43       2   .init       
+     NAME                                    308000      12      18       3   Name_LCD_Module.asm._SEC000000
+     DELAY                                   308012       6       6      10   Name_LCD_Module.asm._SEC000000
+     L3                                      308018       5       5       0   Name_LCD_Module.asm._SEC000000
+     L2                                      30801D       5       5       0   Name_LCD_Module.asm._SEC000000
+     L1                                      308022      14      20       0   Name_LCD_Module.asm._SEC000000
+     DELAY75                                 308036       6       6       1   Name_LCD_Module.asm._SEC000000
+     LL3                                     30803C       5       5       0   Name_LCD_Module.asm._SEC000000
+     LL2                                     308041       5       5       0   Name_LCD_Module.asm._SEC000000
+     LL1                                     308046      14      20       0   Name_LCD_Module.asm._SEC000000
+     DISPLAY                                 30805A       5       5       1   Name_LCD_Module.asm._SEC000000
+     LOOP                                    30805F       D      13       0   Name_LCD_Module.asm._SEC000000
+     REMAIN                                  30806C       5       5       0   Name_LCD_Module.asm._SEC000000
+     OVER                                    308071       6       6       0   Name_LCD_Module.asm._SEC000000
+     LOOP2                                   308077      1F      31       0   Name_LCD_Module.asm._SEC000000
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -114,6 +120,8 @@ OBJECT-DEPENDENCIES SECTION
 ---------------------------------------------------------------------------------------------
 DISPLAY                   USES NAME 
 LOOP                      USES DATWRT4 DELAY 
+OVER                      USES NAME 
+LOOP2                     USES DATWRT4 DELAY COMWRT4 NAME DELAY75 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -125,5 +133,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 3
-Total size of all blocks to be downloaded: 258
+Total size of all blocks to be downloaded: 306
 
