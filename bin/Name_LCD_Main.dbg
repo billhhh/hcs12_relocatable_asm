@@ -1,3 +1,5 @@
+;Author: Bill Wang
+;Date: 11/20/2016/
 ;Main
     
 ; Include derivative-specific definitions 

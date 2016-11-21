@@ -1,3 +1,7 @@
+;Author: Bill Wang
+;Date: 11/20/2016/
+;Module file
+
         XDEF DELAY
         XDEF DISPLAY
         XREF DATWRT4
@@ -5,6 +9,8 @@
 R1      EQU     $1001
 R2      EQU     $1002
 R3      EQU     $1003
+
+NAME DC.B "HU WANG BILL",0
 
 DELAY:
         PSHA		;Save Reg A on Stack
@@ -59,22 +65,15 @@ LL1      NOP         ;1 Intruction Clk Cycle
 
 DISPLAY:
 
-        LDAA	#'Y'     	
+        LDX   #NAME
+LOOP    LDAA	0,X
+        BEQ   OVER  	
   		  JSR	  DATWRT4    	
   		  JSR   DELAY
-  		  LDAA  #'E'     	
-  		  JSR	  DATWRT4 
-  		  JSR   DELAY
-  		  LDAA  #'S'     	
-  		  JSR	  DATWRT4 
-  		  JSR   DELAY
-  		  LDAA  #'S'     	
-  		  JSR	  DATWRT4 
-  		  JSR   DELAY
-  		  LDAA  #'S'     	
-  		  JSR	  DATWRT4 
-  		  JSR   DELAY
-  		  RTS
+  		  INX
+  		  BRA   LOOP
+  		  
+OVER	  RTS
 
         END
 
