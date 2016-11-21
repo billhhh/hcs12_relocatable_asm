@@ -136,5 +136,5 @@ L1      NOP         ;1 Intruction Clk Cycle
 ;**************************************************************
 ;*                 Interrupt Vectors                          *
 ;**************************************************************
-      ORG   $FFFE
+      ;ORG   $FFFE
       DC.W  Entry     ;Reset Vector. CPU wakes here and it is sent to start of the code at $4000
