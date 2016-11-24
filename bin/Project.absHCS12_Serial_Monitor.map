@@ -12,7 +12,7 @@ Linker      : SmartLinker V-5.0.40 Build 10203, Jul 23 2010
 *********************************************************************************************
 FILE SECTION
 ---------------------------------------------------------------------------------------------
-Name_LCD_Main.asm.o                     Model: SMALL,         Lang: Assembler
+DP_Marquis_Lights.asm.o                 Model: SMALL,         Lang: Assembler
 
 *********************************************************************************************
 STARTUP SECTION
@@ -24,12 +24,11 @@ SECTION-ALLOCATION SECTION
 Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
 .stack                           256   R/W     0x1000     0x10FF   RAM
-Name_LCD_Main.asm__ORG00001        280     R     0x4000     0x4117   .absSeg0
-Name_LCD_Main.asm._SEC000000         18     R     0xC000     0xC011   ROM_C000
+DP_Marquis_Lights.asm__ORG00001        273     R     0x4000     0x4110   .absSeg0
 .vectSeg1_vect                     2     R     0xFFFE     0xFFFF   .vectSeg1
 
 Summary of section sizes per section type:
-READ_ONLY (R):         12C (dec:      300)
+READ_ONLY (R):         113 (dec:      275)
 READ_WRITE (R/W):      100 (dec:      256)
 
 *********************************************************************************************
@@ -42,64 +41,53 @@ VECTOR-ALLOCATION SECTION
 OBJECT-ALLOCATION SECTION
      Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
 ---------------------------------------------------------------------------------------------
-MODULE:                 -- Name_LCD_Main.asm.o --
+MODULE:                 -- DP_Marquis_Lights.asm.o --
 - PROCEDURES:
-     Entry                                     4000      44      68       0   .init       
-     LOOP                                      4044       D      13       0   .init       
-     REMAIN                                    4051       5       5       0   .init       
-     OVER                                      4056       6       6       0   .init       
-     LOOP2                                     405C      1F      31       0   .init       
-     LL3                                       407B       5       5       0   .init       
-     LL2                                       4080       5       5       0   .init       
-     LL1                                       4085      15      21       0   .init       
-     AGAIN                                     409A       2       2       0   .init       
-     COMWRT4                                   409C      2B      43       0   .init       
-     DATWRT4                                   40C7      2B      43       0   .init       
-     DELAY                                     40F2       6       6       0   .init       
-     L3                                        40F8       5       5       0   .init       
-     L2                                        40FD       5       5       0   .init       
-     L1                                        4102      14      20       0   .init       
-     VAR00001                                  4116       2       2       0   .init       
+     Entry                                     4000      67     103       0   .init       
+     AGAIN                                     4067       A      10       0   .init       
+     COMWRT4                                   4071      2B      43       0   .init       
+     DATWRT4                                   409C      2B      43       0   .init       
+     LDELAY                                    40C7       6       6       0   .init       
+     L6                                        40CD       5       5       0   .init       
+     L5                                        40D2       5       5       0   .init       
+     L4                                        40D7      14      20       0   .init       
+     DELAY                                     40EB       6       6       0   .init       
+     L3                                        40F1       5       5       0   .init       
+     L2                                        40F6       5       5       0   .init       
+     L1                                        40FB      14      20       0   .init       
+     VAR00001                                  410F       2       2       0   .init       
 - VARIABLES:
-     NAME                                      C000      12      18       3   Name_LCD_Main.asm._SEC000000
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
-  Name_LCD_Main.asm.o                          0    280     18
+  DP_Marquis_Lights.asm.o                      0    273      0
   other                                      256      2      0
 
 *********************************************************************************************
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".init"
-  Entry LOOP REMAIN OVER LOOP2 LL3 LL2 LL1 AGAIN COMWRT4 DATWRT4 DELAY L3 L2 
-  L1 VAR00001 
-SECTION: "Name_LCD_Main.asm._SEC000000"
-  NAME 
+  Entry AGAIN COMWRT4 DATWRT4 LDELAY L6 L5 L4 DELAY L3 L2 L1 VAR00001 
 
 *********************************************************************************************
 OBJECT LIST SORTED BY ADDRESS
      Name                                      Addr   hSize   dSize     Ref    Section   RLIB
 ---------------------------------------------------------------------------------------------
-     Entry                                     4000      44      68       0   .init       
-     LOOP                                      4044       D      13       0   .init       
-     REMAIN                                    4051       5       5       0   .init       
-     OVER                                      4056       6       6       0   .init       
-     LOOP2                                     405C      1F      31       0   .init       
-     LL3                                       407B       5       5       0   .init       
-     LL2                                       4080       5       5       0   .init       
-     LL1                                       4085      15      21       0   .init       
-     AGAIN                                     409A       2       2       0   .init       
-     COMWRT4                                   409C      2B      43       0   .init       
-     DATWRT4                                   40C7      2B      43       0   .init       
-     DELAY                                     40F2       6       6       0   .init       
-     L3                                        40F8       5       5       0   .init       
-     L2                                        40FD       5       5       0   .init       
-     L1                                        4102      14      20       0   .init       
-     VAR00001                                  4116       2       2       0   .init       
-     NAME                                      C000      12      18       3   Name_LCD_Main.asm._SEC000000
+     Entry                                     4000      67     103       0   .init       
+     AGAIN                                     4067       A      10       0   .init       
+     COMWRT4                                   4071      2B      43       0   .init       
+     DATWRT4                                   409C      2B      43       0   .init       
+     LDELAY                                    40C7       6       6       0   .init       
+     L6                                        40CD       5       5       0   .init       
+     L5                                        40D2       5       5       0   .init       
+     L4                                        40D7      14      20       0   .init       
+     DELAY                                     40EB       6       6       0   .init       
+     L3                                        40F1       5       5       0   .init       
+     L2                                        40F6       5       5       0   .init       
+     L1                                        40FB      14      20       0   .init       
+     VAR00001                                  410F       2       2       0   .init       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -122,6 +110,6 @@ STATISTIC SECTION
 
 ExeFile:
 --------
-Number of blocks to be downloaded: 3
-Total size of all blocks to be downloaded: 300
+Number of blocks to be downloaded: 2
+Total size of all blocks to be downloaded: 275
 
